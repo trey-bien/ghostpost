@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<h1>Ghost Post</h1>
+
+<a href="/">Home</a> | <a href="/boasts/">Boasts</a> | <a href="/roasts/">Roasts</a> | <a href="/topposts">Top Posts</a> | <a href="/createpost/">Create a Post</a>
+<div>
+    <ul>
+        {% for post in posts %}
+            <li>
+                {% if post.is_boast == True %}
+                    <i>Boast</i>
+                {% else %}
+                    <i>Roast</i>
+                {% endif %}<br>
+                {{post.text}}
+                <div style="font-size:10px">{{post.date_time}}</div>
+                Rating: {{post.score}}</br>
+                <a href="/upvote/{{post.id}}">UPVOTE</a> || <a href="/downvote/{{post.id}}">DOWNVOTE</a>
+
+                
+            </li>
+        {% endfor %}
+    </ul>
+</div>
